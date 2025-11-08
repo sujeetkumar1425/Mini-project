@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Resume & Portfolio Builder (separate file)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/builder.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="brand">Resume & Portfolio Builder</div>
+            <div class="muted">Editable template (no JavaScript). Type directly into the fields.</div>
+
+            <div class="hint">How to use
+                <ul>
+                    <li>Click any text in the white sheet to edit it.</li>
+                    <li>To add a photo: copy an image into your clipboard and paste it (Ctrl+V) onto the photo box, or drag & drop an image into the sheet (many browsers allow this).</li>
+                    <li>When ready, open <span class="kbd">Print</span> (Ctrl+P) and choose "Save as PDF" to download your resume/portfolio.</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                Notes:
+                <ul>
+                    <li>Pasting images or dragging files into the editable area often embeds them directly into the document (browser dependent).</li>
+                    <li>This page uses only HTML and CSS so it works offline and is easy to customize.</li>
+                </ul>
+            </div>
+            <div class="divider"></div>
+            <div class="muted">Tips</div>
+            <div class="hint">Keep text concise. Use the Experience and Projects sections for 2–5 strong examples.</div>
+        </aside>
+
+        <main class="workspace">
+            <div class="sheet" role="application" aria-label="Resume preview">
+                <div>
+                    <div class="photo" contenteditable="true" title="Paste or drop an image here"></div>
+                </div>
+
+                <div>
+                    <div class="name placeholder" contenteditable="true" data-placeholder="Your full name">Your Name</div>
+                    <div class="title placeholder" contenteditable="true" data-placeholder="Job title or short tagline">Web Developer | Designer</div>
+                    <div class="contact placeholder" contenteditable="true" data-placeholder="Email · Phone · Location">email@example.com · +1 555 555 5555 · City, Country</div>
+
+                    <div class="section">
+                        <h3>Summary</h3>
+                        <div class="placeholder" contenteditable="true" data-placeholder="Short summary about you (2–4 lines)">Passionate developer with experience building responsive web apps and designing user-friendly interfaces.</div>
+                    </div>
+
+                    <div class="section">
+                        <h3>Skills</h3>
+                        <div>
+                            <span class="skill" contenteditable="true">HTML</span>
+                            <span class="skill" contenteditable="true">CSS</span>
+                            <span class="skill" contenteditable="true">Responsive Design</span>
+                            <span class="skill" contenteditable="true">UI Design</span>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>Experience</h3>
+                        <div class="placeholder" contenteditable="true" data-placeholder="Company · Role · Dates
+• Key achievement 1
+• Key achievement 2">Company XYZ · Frontend Developer · 2022–Present
+• Built responsive UI for product landing pages
+• Improved accessibility and performance</div>
+                    </div>
+
+                    <div class="section">
+                        <h3>Projects / Portfolio</h3>
+                        <div class="placeholder" contenteditable="true" data-placeholder="Project name — short description. Link (optional)">Project A — A one-sentence description. github.com/you/project-a
+
+Project B — Another short description.</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- No JavaScript: the page is intentionally JS-free so editing is direct and printing works offline. -->
+
+</body>
+
+</html>
