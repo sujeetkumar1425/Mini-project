@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raghav-Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/main.css">
+            <style>
+                .builder { box-shadow: none !important; border-radius: 0 !important; padding: 12mm !important; display: block !important; }
+                .builder * { color: #000 !important; background: transparent !important; }
+                img { max-width: 100% !important; height: auto !important; }
+                /* A4 portrait by default */
+                @page { size: A4 portrait; margin: 12mm; }
+            </style>
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left"><a href="index.html">Portfolio</a></div>
+            <div class="right">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Projects</a></li>
+                    <!--<li><a href="#builder" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'}); return false;">Resume</a></li>-->
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="auth-btn create-btn" onclick="showPortfolioForm()">Create Portfolio</a></li>
+                    <li><a href="#" class="auth-btn generate-btn" onclick="generatePortfolio()">Generate Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="firstSection">
+            <div class="leftsection">
+                Hi, My name Is <span class="purple">Sujeet</span>
+                <span>and I am a passionate</span>
+
+                <span id="element"></span>
+            </div>
+
+            <div class="rightsection">
+                <img src="bg.png.png" alt="">
+            </div>
+        </section>
+        <hr>
+        <section class="secondSection">
+            <span class="text-gray">What I have done so far</span>
+            <h1>Work Experience</h1>
+            <!--<div class="box">
+                <div class="vertical"></div>
+                <div class="vertical"></div>
+                <div class="vertical"></div>
+                <div class="vertical"></div>
+                
+            </div> -->
+            <!-- Portfolio experience output (populated from builder) -->
+            <div id="portfolio-experience" class="portfolio-experience">
+                <p class="empty-note">Your work experience will appear here when you add it in the Resume builder.</p>
+            </div>
+        </section>
+        <!-- Builder section appended -->
+        <section id="builder" class="builder-wrap">
+            <div class="builder-instructions" style="color: white; font-size:0.95rem; margin-bottom:10px;">
+                <strong>Resume & Portfolio Builder</strong>
+                <div style="margin-top:8px; color:#dfefff; font-size:0.92rem;">
+                    <!--Steps to create your resume / portfolio:
+                    <ol style="margin-left:18px; margin-top:6px;">
+                        <li>Click any text on the white sheet to edit it directly.</li>
+                        <li>To add a photo: focus the photo box and paste an image (Ctrl+V) or drag & drop a file into the box (browser dependent).</li>
+                        <li>Use copy/paste to duplicate or move lines and sections as needed.</li>
+                        <li>When finished, press <span class="kbd">Ctrl+P</span> (Print) and choose "Save as PDF" to download your resume. The page will automatically hide navigation and instructions when printing.</li>
+                    </ol>-->
+                </div>
+                <div style="margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <label style="color:#dfefff; font-size:0.92rem;">Template:</label>
+                    <select id="templateSelect" style="padding:6px 8px; border-radius:6px; border:0;">
+                        <option value="default">Default</option>
+                        <option value="compact">Compact</option>
+                        <option value="modern">Modern</option>
+                    </select>
+                    <button id="uploadBtn" class="btn">Upload Photo</button>
+                    <input id="photoInput" type="file" accept="image/*" style="display:none">
+                    <button id="resetPhotoBtn" class="btn secondary" title="Remove photo">Reset Photo</button>
+                    <button id="printBtn" class="btn secondary">Save as PDF</button>
+                </div>
+            </div>
+            <div class="builder">
+                <div class="leftcol">
+                    <div class="photo-box" contenteditable="true" title="Paste or drop image here"></div>
+                </div>
+                <form action="">
+                    <div class="rightcol">
+                        <div class="name placeholder" contenteditable="true" data-placeholder="Your full name">Your Name</div>
+                        <div class="title placeholder" contenteditable="true" data-placeholder="Job title or short tagline">Web Developer</div>
+
+                        <div class="section">
+                            <h4>Contact</h4>
+                            <div class="placeholder" contenteditable="true" data-placeholder="email · phone · location">sujeetku2507@gmail.com · +1 555 555 5555 · City</div>
+                        </div>
+
+                        <div class="section">
+                            <h4>Summary</h4>
+                            <div class="placeholder" contenteditable="true" data-placeholder="A short 2-3 line summary about you">A concise summary about your experience and strengths.</div>
+                        </div>
+
+                        <div class="section">
+                            <h4>Experience</h4>
+                            <div id="builder-experience" class="placeholder" contenteditable="true" data-placeholder="Company · Role · Dates · Achievements">Company XYZ · Frontend Developer · 2022–Present
+                • Built responsive interfaces
+                • Improved performance</div>
+                        </div>
+
+                        <div class="section">
+                            <h4>Projects</h4>
+                            <div class="placeholder" contenteditable="true" data-placeholder="Project — short description">Project A — Short description and link (optional)</div>
+                        </div>
+
+                        <div class="section">
+                            <h4>Qualification</h4>
+                            <div class="placeholder" contenteditable="true" data-placeholder="Degree · Institution · Year · Notes">B.Tech in Computer Science — ABC University — 2023
+                • Relevant coursework: Data Structures, Web Development</div>
+                        </div>
+
+                        <div class="section">
+                            <h4>Skills</h4>
+                            <div class="placeholder" contenteditable="true" data-placeholder="List skills separated by commas or bullets">HTML, CSS, JavaScript, React, Git</div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+                
+                
+        </section>
+    </main>
+                <!-- Footer (horizontal) -->
+               
+
+        <!-- Contact Us (inserted from user snippet) -->
+        <section id="contact" class="contact-section" aria-label="Contact information">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:sumitraghav1431@gmail.com">support.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    +91-9993XXXXX
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    New Delhi, India
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="index.html" target="_blank" rel="noopener">www.portfolio.com</a>
+                </div>
+            </div>
+        </section>
+         <footer class="site-footer" role="contentinfo">
+                        <div class="brand-left">© 2025 Raghav</div>
+                        
+                </footer>
+    <!-- Portfolio Creation Modal -->
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content portfolio-form">
+            <span class="close" onclick="closeModal('portfolioModal')">&times;</span>
+            <h2>Create Your Portfolio</h2>
+            <form id="portfolioForm">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name:</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title:</label>
+                            <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g., Web Developer" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" placeholder="City, Country" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Professional Summary</h3>
+                    <div class="form-group">
+                        <label for="summary">About You:</label>
+                        <textarea id="summary" name="summary" rows="3" placeholder="Write a brief summary about yourself and your expertise" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Experience</h3>
+                    <div class="form-group">
+                        <label for="experience">Work Experience:</label>
+                        <textarea id="experience" name="experience" rows="4" placeholder="Company · Role · Dates · Key achievements (separate multiple experiences with line breaks)" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Projects</h3>
+                    <div class="form-group">
+                        <label for="projects">Projects:</label>
+                        <textarea id="projects" name="projects" rows="3" placeholder="Project Name — Description and technologies used (separate multiple projects with line breaks)" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Education</h3>
+                    <div class="form-group">
+                        <label for="education">Education:</label>
+                        <textarea id="education" name="education" rows="2" placeholder="Degree · Institution · Year · Additional details" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="form-group">
+                        <label for="skills">Skills:</label>
+                        <input type="text" id="skills" name="skills" placeholder="HTML, CSS, JavaScript, React, Node.js, etc." required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn auth-submit-btn">Generate Portfolio</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
