@@ -78,6 +78,224 @@ nav ul li a:hover {
     font-size: 1.04rem;
 }
 
+/* Authentication buttons styling */
+.auth-btn {
+    background: rgb(163, 84, 236) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+.auth-btn:hover {
+    background: rgb(142, 70, 200) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(163, 84, 236, 0.3) !important;
+}
+
+.signin-btn {
+    background: transparent !important;
+    border: 2px solid rgb(163, 84, 236) !important;
+    color: rgb(163, 84, 236) !important;
+}
+
+.signin-btn:hover {
+    background: rgb(163, 84, 236) !important;
+    color: white !important;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: rgb(18, 18, 62);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background-color: rgb(0, 0, 33);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgb(163, 84, 236);
+}
+
+.auth-submit-btn {
+    width: 100%;
+    background: rgb(163, 84, 236) !important;
+    color: white !important;
+    padding: 12px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.3s !important;
+    margin-top: 10px !important;
+}
+
+.auth-submit-btn:hover {
+    background: rgb(142, 70, 200) !important;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+}
+
+.auth-switch a {
+    color: rgb(163, 84, 236);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Portfolio form styling */
+.portfolio-form {
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.form-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    color: rgb(163, 84, 236);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background-color: rgb(0, 0, 33);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgb(163, 84, 236);
+}
+
+@media (max-width: 768px) {
+    .portfolio-form {
+        max-width: 95%;
+        margin: 2% auto;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .form-row .form-group {
+        margin-bottom: 15px;
+    }
+}
+
 main hr {
     border: 0.2;
     background: #9c97f1;
@@ -140,6 +358,7 @@ main hr {
     height: 2px;
     margin: 56px 0;
     display: flex;
+    justify-content: space-around;
 }
 .secondSection .vertical{
     background-color: white;
@@ -147,6 +366,20 @@ main hr {
     width: 1px;
     margin-top: 0;
     margin-left: 100px;
+}
+
+/* Portfolio experience timeline styling */
+.portfolio-experience { max-width: 900px; margin: 18px auto 40px; padding: 12px 18px; color: #eef2ff; }
+.portfolio-experience .empty-note { color: #9aa9c7; font-style: italic; }
+.portfolio-experience .exp-list { position: relative; padding-left: 24px; margin-top: 12px; }
+.portfolio-experience .exp-list::before { content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: linear-gradient(#9c97f1, #6f6be6); }
+.portfolio-experience .exp-item { position: relative; margin: 12px 0 20px 0; padding: 8px 12px 8px 18px; background: rgba(255,255,255,0.03); border-radius: 6px; }
+.portfolio-experience .exp-item::before { content: ""; position: absolute; left: -12px; top: 12px; width: 10px; height: 10px; background: #9c97f1; border-radius: 50%; box-shadow: 0 0 6px rgba(156,151,241,0.6); }
+.portfolio-experience .exp-item h5 { margin: 0 0 6px 0; color: #fff; font-size: 1rem; }
+.portfolio-experience .exp-item p { margin: 0; color: #d6defb; white-space: pre-wrap; }
+
+@media (max-width:720px){
+    .portfolio-experience { padding: 10px; }
 }
 
 /* Builder styles (added) */
@@ -197,4 +430,15 @@ main hr {
     img { max-width: 100% !important; height: auto !important; }
     /* A4 portrait by default */
     @page { size: A4 portrait; margin: 12mm; }
+    /* hide contact and footer when printing (remove Contact Us from print output) */
+    #contact, .contact-section, .site-footer { display: none !important; }
+    /* print-only header line: a horizontal rule at top of printed resume */
+    .builder::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #9c97f1;
+        margin: 0 0 6mm 0;
+    }
 }
