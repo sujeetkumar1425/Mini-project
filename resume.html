@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/main.css">
+            <style>
+                .builder { box-shadow: none !important; border-radius: 0 !important; padding: 12mm !important; display: block !important; }
+                .builder * { color: #000 !important; background: transparent !important; }
+                img { max-width: 100% !important; height: auto !important; }
+                /* A4 portrait by default */
+                @page { size: A4 portrait; margin: 12mm; }
+            </style>
+    </style>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide icons via CDN -->
+    <script src="unpkg.com"></script>
+    <!-- Link custom styles, especially for print media -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0f1729] min-h-screen">
+    <header>
+        <nav>
+            <div class="left"><a href="index.html">Portfolio</a></div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <!--<li><a href="#builder" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'}); return false;">Resume</a></li>-->
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="portfolio.html" class="auth-btn create-btn" onclick="showPortfolioForm()">Create Portfolio</a></li>
+                    <li><a href="resume.html" class="auth-btn generate-btn" onclick="generatePortfolio()">Generate Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Header/Controls Section (Hidden when printing) -->
+    <div class="no-print bg-[#0f1729] border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- history.back() mimics the React onBack function -->
+            <button onclick="history.back()" class="flex items-center gap-2 text-white hover:text-purple-400 transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                Back to Portfolio
+            </button>
+            <button onclick="window.print()" class="flex items-center gap-2 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                <i data-lucide="printer" class="w-5 h-5"></i>
+                Print Resume
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Resume Builder Form (Hidden when printing) -->
+            <div class="no-print space-y-6">
+                <h1 class="text-white text-3xl">Build Your Resume</h1>
+
+                <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                    <h2 class="text-white text-xl mb-4">Personal Information</h2>
+                    <div class="space-y-4">
+                        <input type="text" id="fullName" value="Sujeet" placeholder="Full Name" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600" oninput="updateResumePreview()">
+                        <input type="text" id="title" value="Full Stack Developer" placeholder="Professional Title" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600" oninput="updateResumePreview()">
+                        <input type="email" id="email" value="sujeet@example.com" placeholder="Email" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600" oninput="updateResumePreview()">
+                        <input type="tel" id="phone" value="+1 234 567 8900" placeholder="Phone" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600" oninput="updateResumePreview()">
+                        <input type="text" id="location" value="New York, USA" placeholder="Location" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600" oninput="updateResumePreview()">
+                        <textarea id="summary" placeholder="Professional Summary" rows="4" class="w-full px-4 py-2 bg-[#0f1730] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600 resize-none" oninput="updateResumePreview()"></textarea>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                    <h2 class="text-white text-xl mb-4">Skills</h2>
+                    <div class="flex gap-2 mb-4">
+                        <input type="text" id="newSkillInput" placeholder="Add a skill" class="flex-1 px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <button onclick="addSkill()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <div id="skillsContainerForm" class="flex flex-wrap gap-2">
+                        <!-- Skills will be rendered here -->
+                    </div>
+                </div>
+
+                <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                    <h2 class="text-white text-xl mb-4">Work Experience</h2>
+                    <div class="space-y-3 mb-4">
+                        <input type="text" id="newWorkTitle" placeholder="Job Title" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <input type="text" id="newWorkCompany" placeholder="Company" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <input type="text" id="newWorkDuration" placeholder="Duration (e.g., 2020 - Present)" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <textarea id="newWorkDescription" placeholder="Description (use bullet points in your mind, can be multiple lines)" rows="2" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600 resize-none"></textarea>
+                        <button onclick="addWorkExperience()" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            Add Work Experience
+                        </button>
+                    </div>
+                    <div id="workExperienceContainerForm" class="space-y-3">
+                         <!-- Work experiences will be rendered here -->
+                    </div>
+                </div>
+
+                 <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                    <h2 class="text-white text-xl mb-4">Education</h2>
+                    <div class="space-y-3 mb-4">
+                        <input type="text" id="newEducationDegree" placeholder="Degree/Field" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <input type="text" id="newEducationInstitution" placeholder="Institution" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <input type="text" id="newEducationYear" placeholder="Year (e.g., 2018-2022)" class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                        <button onclick="addEducation()" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            Add Education
+                        </button>
+                    </div>
+                    <div id="educationContainerForm" class="space-y-3">
+                         <!-- Education entries will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume Preview Area -->
+            <div class="lg:sticky lg:top-20 h-fit">
+                <div id="resumePreview" class="bg-white p-8 shadow-2xl text-gray-800 max-w-lg mx-auto print:max-w-none print:p-0">
+                    <!-- Dynamic content generated by script.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="resume.js"></script>
+</body>
+</html>

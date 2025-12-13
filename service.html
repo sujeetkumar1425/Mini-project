@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Services</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/main.css">
+            <style>
+                .builder { box-shadow: none !important; border-radius: 0 !important; padding: 12mm !important; display: block !important; }
+                .builder * { color: #000 !important; background: transparent !important; }
+                img { max-width: 100% !important; height: auto !important; }
+                /* A4 portrait by default */
+                @page { size: A4 portrait; margin: 12mm; }
+            </style>
+    </style>
+
+  <style>
+    /* Page base */
+    :root{
+      --bg: #0b1220;
+      --container-bg: transparent;
+      --card-bg: #1a2332;
+      --card-border: #2d3748; /* similar to gray-800 */
+      --text-white: #ffffff;
+      --muted: #9ca3af; /* gray-400 */
+      --icon-purple: #b794f4; /* purple-400-ish */
+      --hover-purple: #7c3aed; /* purple-600-ish */
+      --max-width: 1120px; /* approx. max-w-7xl */
+      --radius: 12px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #07101a 100%);
+      color: var(--text-white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .container{
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem; /* px-6 */
+      padding-right: 1.5rem;
+      padding-top: 5rem; /* py-20 -> 80px (approx) */
+      padding-bottom: 5rem;
+      box-sizing: border-box;
+      background: var(--container-bg);
+    }
+
+    h1{
+      font-size: 2.25rem; /* text-4xl */
+      line-height: 1.1;
+      margin: 0 0 0.5rem 0;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    p.lead{
+      margin: 0 0 3rem 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Grid */
+    .grid{
+      display: grid;
+      gap: 1.5rem; /* gap-8 */
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: start;
+    }
+
+    /* Card */
+    .card{
+      background: var(--card-bg);
+      padding: 2rem; /* p-8 */
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      transition: border-color 200ms ease, transform 160ms ease;
+      box-sizing: border-box;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    .card:hover{
+      border-color: var(--hover-purple);
+      transform: translateY(-4px);
+    }
+
+    .icon{
+      width: 48px; /* w-12 */
+      height: 48px; /* h-12 */
+      color: var(--icon-purple);
+      margin-bottom: 0.5rem;
+      flex: 0 0 auto;
+    }
+
+    .title{
+      font-size: 1.125rem; /* text-xl */
+      margin: 0 0 0.5rem 0;
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    .desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Responsive tweaks */
+    @media (min-width: 768px){
+      .grid{
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+      }
+    }
+
+    /* Small accessibility focus ring for keyboard users */
+    .card:focus-within, .card:focus {
+      outline: 3px solid rgba(124,58,237,0.15);
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+     <header>
+        <nav>
+            <div class="left"><a href="index.html">Portfolio</a></div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <!--<li><a href="#builder" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'}); return false;">Resume</a></li>-->
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="portfolio.html" class="auth-btn create-btn" onclick="showPortfolioForm()">Create Portfolio</a></li>
+                    <li><a href="resume.html" class="auth-btn generate-btn" onclick="generatePortfolio()">Generate Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+  <main class="container" id="services-root" aria-labelledby="services-heading">
+    <h1 id="services-heading">Services</h1>
+    <p class="lead">What I can do for you</p>
+
+    <div class="grid" id="services-grid" role="list"></div>
+  </main>
+
+  <script>
+    /*
+      Converted from React component to plain HTML/JS.
+      The icons are inline SVGs designed to visually match lucide icons:
+      - Code
+      - Palette
+      - Server
+      - Smartphone
+
+      Each service object contains:
+      - icon: SVG string (safe static content)
+      - title: string
+      - description: string
+
+      The script will populate #services-grid with accessible service cards.
+    */
+
+    // SVG icon templates (lucide-inspired)
+    const Icons = {
+      Code: `
+        <svg class="icon-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M8.5 17.5L3 12l5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 17.5L21 12l-5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `,
+      Palette: `
+        <svg class="icon-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M21 12a9 9 0 1 1-9-9c1.94 0 3.28.88 4.12 1.78.75.81.99 1.86.73 2.83-.25.98-1.02 1.86-2.03 2.31-.98.44-2.27.35-3.14-.39-.87-.74-1.08-1.98-.53-2.98" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14.5" cy="7.5" r="0.75" fill="currentColor"/>
+          <circle cx="9" cy="7.5" r="0.75" fill="currentColor"/>
+          <circle cx="9" cy="12.5" r="0.75" fill="currentColor"/>
+        </svg>
+      `,
+      Server: `
+        <svg class="icon-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect x="2" y="3" width="20" height="8" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="2" y="13" width="20" height="8" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M6 7h.01M6 17h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `,
+      Smartphone: `
+        <svg class="icon-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 18h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `
+    };
+
+    // Services data (same content as original React component)
+    const services = [
+      {
+        icon: Icons.Code,
+        title: 'Web Development',
+        description: 'Building responsive and performant web applications using modern frameworks and best practices.'
+      },
+      {
+        icon: Icons.Palette,
+        title: 'UI/UX Design',
+        description: 'Creating beautiful and intuitive user interfaces that provide excellent user experiences.'
+      },
+      {
+        icon: Icons.Server,
+        title: 'Backend Development',
+        description: 'Developing robust server-side applications and APIs with secure and scalable architectures.'
+      },
+      {
+        icon: Icons.Smartphone,
+        title: 'Mobile Responsive',
+        description: 'Ensuring your website looks perfect on all devices from mobile phones to desktop computers.'
+      }
+    ];
+
+    // Render function
+    (function renderServices() {
+      const grid = document.getElementById('services-grid');
+      if (!grid) return;
+
+      // Clear existing content (if any)
+      grid.innerHTML = '';
+
+      services.forEach((svc) => {
+        // Card container
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0'); // make focusable for keyboard users
+
+        // Icon wrapper
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'icon';
+        iconWrap.setAttribute('aria-hidden', 'true');
+        iconWrap.innerHTML = svc.icon;
+
+        // Title
+        const title = document.createElement('h3');
+        title.className = 'title';
+        title.textContent = svc.title;
+
+        // Description
+        const desc = document.createElement('p');
+        desc.className = 'desc';
+        desc.textContent = svc.description;
+
+        // Compose
+        card.appendChild(iconWrap);
+        card.appendChild(title);
+        card.appendChild(desc);
+
+        grid.appendChild(card);
+      });
+    })();
+  </script>
+</body>
+</html>

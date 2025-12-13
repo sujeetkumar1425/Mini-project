@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Creator</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/main.css">
+            <style>
+                .builder { box-shadow: none !important; border-radius: 0 !important; padding: 12mm !important; display: block !important; }
+                .builder * { color: #000 !important; background: transparent !important; }
+                img { max-width: 100% !important; height: auto !important; }
+                /* A4 portrait by default */
+                @page { size: A4 portrait; margin: 12mm; }
+            </style>
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Remove or comment out this line: -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    
+    <!-- Using lucide icons via CDN for Plus and Trash2 icons -->
+    <script src="unpkg.com"></script>
+</head>
+<body class="bg-[#0f1729]">
+    <!-- ... rest of the body content ... -->
+    <script src="script.js"></script>
+</head>
+<body class="bg-[#0f1729]">
+    <header>
+        <nav>
+            <div class="left"><a href="index.html">Portfolio</a></div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <!--<li><a href="#builder" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'}); return false;">Resume</a></li>-->
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="auth-btn create-btn" onclick="showPortfolioForm()">Create Portfolio</a></li>
+                    <li><a href="resume.html" class="auth-btn generate-btn" onclick="generatePortfolio()">Generate Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="max-w-4xl mx-auto px-6 py-20">
+        <h1 class="text-white text-4xl mb-4">Create Your Portfolio</h1>
+        <p class="text-gray-400 mb-12">Build your personalized portfolio</p>
+
+        <div class="space-y-8">
+            <!-- Basic Information Section -->
+            <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                <h2 class="text-white text-xl mb-4">Basic Information</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-gray-300 mb-2">Name</label>
+                        <input type="text" id="name" value="Sujeet"
+                               class="w-full px-4 py-3 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                    </div>
+                    <div>
+                        <label for="title" class="block text-gray-300 mb-2">Title</label>
+                        <input type="text" id="title" value="Full Stack Developer"
+                               class="w-full px-4 py-3 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                    </div>
+                    <div>
+                        <label for="about" class="block text-gray-300 mb-2">About</label>
+                        <textarea id="about" rows="4"
+                                  class="w-full px-4 py-3 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600 resize-none"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                <h2 class="text-white text-xl mb-4">Skills</h2>
+                <div class="flex gap-2 mb-4">
+                    <input type="text" id="newSkillInput" placeholder="Add a skill"
+                           class="flex-1 px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                    <button onclick="addSkill()"
+                            class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div id="skillsContainer" class="flex flex-wrap gap-2">
+                    <!-- Skills will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="bg-[#1a2332] p-6 rounded-lg border border-gray-800">
+                <h2 class="text-white text-xl mb-4">Projects</h2>
+                <div class="space-y-3 mb-4">
+                    <input type="text" id="newProjectTitleInput" placeholder="Project title"
+                           class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600">
+                    <textarea id="newProjectDescriptionInput" placeholder="Project description" rows="2"
+                              class="w-full px-4 py-2 bg-[#0f1729] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-purple-600 resize-none"></textarea>
+                    <button onclick="addProject()"
+                            class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Add Project
+                    </button>
+                </div>
+                <div id="projectsContainer" class="space-y-3">
+                    <!-- Projects will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/main.css">
+            <style>
+                .builder { box-shadow: none !important; border-radius: 0 !important; padding: 12mm !important; display: block !important; }
+                .builder * { color: #000 !important; background: transparent !important; }
+                img { max-width: 100% !important; height: auto !important; }
+                /* A4 portrait by default */
+                @page { size: A4 portrait; margin: 12mm; }
+            </style>
+    </style>
+    <!-- Include Tailwind CSS via CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A dark background for the overall page body to match the original React/Tailwind theme */
+        body {
+            background-color: #0f172a; /* slate-900 */
+        }
+    </style>
+</head>
+<body>
+     <header>
+        <nav>
+            <div class="left"><a href="index.html">Portfolio</a></div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <!--<li><a href="#builder" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'}); return false;">Resume</a></li>-->
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="portfolio.html" class="auth-btn create-btn" onclick="showPortfolioForm()">Create Portfolio</a></li>
+                    <li><a href="resume.html" class="auth-btn generate-btn" onclick="generatePortfolio()">Generate Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <h1 class="text-white text-4xl mb-8">About Me</h1>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-gray-300 mb-6">
+            I'm a passionate full stack developer with expertise in building modern web applications.
+            With over 5 years of experience, I've worked on various projects ranging from small
+            business websites to large-scale enterprise applications.
+          </p>
+          <p class="text-gray-300 mb-6">
+            My journey in web development started with a curiosity about how websites work,
+            and it has evolved into a career where I get to create innovative solutions
+            that make a difference.
+          </p>
+          <p class="text-gray-300">
+            I believe in writing clean, maintainable code and staying up-to-date with
+            the latest technologies and best practices in the industry.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-purple-400 mb-3">Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <!-- Skill Tags -->
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">JavaScript</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">TypeScript</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">React</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">Node.js</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">HTML/CSS</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">Python</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">SQL</span>
+              <span class="px-4 py-2 bg-[#1a2332] text-white rounded-lg border border-gray-800">MongoDB</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-purple-400 mb-3">Education</h3>
+            <div class="bg-[#1a2332] p-4 rounded-lg border border-gray-800">
+              <p class="text-white">Bachelor of Computer Science</p>
+              <p class="text-gray-400">University Name • 2014 - 2018</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

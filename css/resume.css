@@ -1,0 +1,27 @@
+/* Import Tailwind base styles using directives if you were using a build process */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/* Custom styles for printing */
+@media print {
+    /* Hide the form builder (anything with class "no-print") when printing */
+    .no-print {
+        display: none !important;
+    }
+
+    /* Make the resume preview take up the full width of the printed page */
+    #resumePreview {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        /* Ensure text color is black for printing */
+        color: black !important; 
+    }
+    
+    /* Ensure the body background is white for printing */
+    body {
+        background-color: white !important;
+    }
+}

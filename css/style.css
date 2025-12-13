@@ -1,0 +1,4 @@
+/* Using Tailwind CSS JIT compiler via CDN for utility classes */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
