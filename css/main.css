@@ -18,7 +18,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: 80px;
-    background-color:rgb(43, 43, 87);
+    background-color: rgb(43, 43, 87);
 }
 
 nav ul {
@@ -38,8 +38,7 @@ nav ul li a {
 }
 .auth-btn:hover{
     /* stronger multi-layer purple glow on hover */
-    box-shadow: 0 6px 18px rgba(251, 251, 251, 0.35) !important,
-                0 0 36px rgba(163,84,236,0.18) !important;
+    box-shadow: 0 6px 18px rgba(251, 251, 251, 0.35) !important, 0 0 36px rgba(163,84,236,0.18) !important;
     /* keep smooth interaction (auth-btn has a transition already) */
 }
 
